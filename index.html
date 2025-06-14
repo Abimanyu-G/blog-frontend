@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brite It</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/rovin" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/dasher" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/grendel" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/vickey" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/mahone-sans" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/hvd-comic-serif-pro" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/spicy-tacos" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/anthem-pride" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/barmeno" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/youthome" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/freesans" rel="stylesheet"> 
+    <link rel="shortcut icon" href="favicon.JPG" type="image/x-icon">            
+</head>
+<body>
+
+    <header>
+        <div class="logo">Brite it</div>
+        <!-- <h2>BLOG - WRITE</h2> -->
+        <nav class="nav-buttons">
+            <button class="glass-btn" id="readBtn">Read Blog</button>
+            <button class="glass-btn" id="writeBtn">Post here</button>
+            <button class="glass-btn" id="aboutBtn">About</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="readSection">
+            <h2 class="ree">Read blogs here...</h2>
+            <div id="blogsContainer" class="blog-grid"></div>
+
+            <div id="fullBlogView" class="fullBlog" style="display: none;">
+            <h2 id="fullTitle"></h2>
+            <h4 id="fullAuthor"></h4>
+            <img id="fullImage"/>
+            <p id="fullContent"></p>    
+        </div>
+        </section>
+
+        <section id="writeSection" class="write-form-container">
+         <h2 style="text-align: center; font-family: 'Anthem Pride', sans-serif; color: rgb(255, 255, 255);
+         text-shadow: -2px -2px 4px rgba(36, 28, 72, 0.875),2px 2px 4px rgba(36, 31, 86, 0.874);">Write a Your Blog here</h2>
+          <div id="formError" class="form-error"></div>
+         <form id="blogForm" enctype="multipart/form-data">
+
+            <label for="imageInput" class="file-label" style="color: white;"> Add Cover Image (Landscape) </label>
+           <input type="file" name="image" id="imageInput" class="file-input" accept="image/*">
+           <span id="fileNameDisplay"></span>
+
+           <script>
+            const fileInput = document.getElementById('imageInput');
+            const fileNameDisplay = document.getElementById('fileNameDisplay');
+          
+            fileInput.addEventListener('change', function () {
+              if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = fileInput.files[0].name;
+              } else {
+                fileNameDisplay.textContent = '';
+              }
+            });
+          </script>
+          
+
+
+            <!-- <input type="file" name="image" id="imageInput/" accept="image/*"><br><br> -->
+            <input type="text" name="title" id="Enter Title" placeholder="Enter The Title..." >
+            <br><br>
+
+                <input type="text" name="author" id="Enter Your Name" placeholder="Enter Your Name...">
+                <br><br>
+
+                <textarea name="content" placeholder="Type your blog..."></textarea><br><br>
+
+        <button type="submit">Post</button>
+        
+        <script>
+            const form = document.getElementById('blogForm');
+            const titleInput = document.getElementById('Enter Title');
+            const authorInput = document.getElementById('Enter Your Name');
+            const contentInput = document.querySelector('textarea[name="content"]');
+            const errorDiv = document.getElementById('formError');
+          
+            form.addEventListener('submit', function (e) {
+              errorDiv.textContent = ""; // Reset error
+          
+              if (
+                titleInput.value.trim() === "" ||
+                authorInput.value.trim() === "" ||
+                contentInput.value.trim() === ""
+              ) {
+                e.preventDefault();
+                errorDiv.textContent = "Write something before posting buddy!";
+                errorDiv.classList.add("show");
+                return;
+              }
+            });
+          </script>        
+         </form>
+         <p id="postStatus"></p>
+        </section>
+          
+        <section id="aboutSection">
+        <div id="aboutPage" class="glass-box">
+            <h2 style="font-family: 'Youthome', sans-serif; font-size: 40px; text-shadow: 2px 3px 6px black;">Thanks for Visiting!</h2>
+            <h3 style="font-family: 'Youthome', sans-serif; font-size: 20px; text-shadow: 2px 3px 6px black;">Blog + Write it = Brite It </h3>
+            <p style="font-family:'FreeSans', sans-serif; font-size: 17px; text-shadow: 2px 3px 6px black;">Wanna write something, wanna Blog something<br> "Brite it" is here for you guys to express
+              your thoughts, the things that you wanna Share and also a Space where you can be anonymous <br>
+              Share it with your pals! <br>
+              Cheers from Abimanyu 
+            </p>
+            <p  style="font-family:'FreeSans', sans-serif; font-size: 17px; text-shadow: 2px 3px 6px black;">Contact me here at <a href="mailto:abimanyuganesan3@gmail.com" style="color: rgb(179, 183, 232); text-decoration: none;">abimanyuganesan3@gmail.com</a></p>
+          </div>
+        </section>
+        
+    </main>
+      
+      
+    <script src="script.js"></script>
+</body>
+</html>
