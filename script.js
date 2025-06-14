@@ -39,7 +39,7 @@ const blogContainer = document.getElementById("blogsContainer");
 
 async function fetchBlogs() {
   try {
-    const res = await fetch("https://blog-backend-32ch.onrender.com");
+    const res = await fetch("https://blog-backend-32ch.onrender.com/api/blogs");
     const blogs = await res.json();
     
   const container = document.getElementById('blogsContainer');
@@ -117,7 +117,7 @@ blogForm.addEventListener('submit', async (e) => {
   postStatus.textContent = "Posting your blog...";
 
   try {
-    const response = await fetch('https://blog-backend-32ch.onrender.com', {
+    const response = await fetch('https://blog-backend-32ch.onrender.com/api/blogs', {
       method: 'POST',
       body: formData
     });
@@ -125,6 +125,7 @@ blogForm.addEventListener('submit', async (e) => {
     if (response.ok) {
       postStatus.textContent = "Blog posted successfully!";
       blogForm.reset();
+      fetchBlogs();
     } else {
       const err = await response.json();
       postStatus.textContent = '';//"Error: " + (err.message || 'Something went wrong');
