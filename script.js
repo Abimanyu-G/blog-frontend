@@ -144,6 +144,7 @@ window.addEventListener('popstate', (event)=> {
   document.getElementById('fullBlogView').style.display = 'none';
   document.getElementById('blogsContainer').style.display = '';
   document.body.classList.remove('fullBlog');
+  fetchBlogs();
 });
 
 
